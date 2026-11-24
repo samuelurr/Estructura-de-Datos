@@ -1,0 +1,56 @@
+public class Main {
+
+    public static void main(String[] args) {
+        // 1. MATRIZ 2D: 3 estudiantes (filas) x 3 evaluaciones (columnas)
+        String[] estudiantes = {"Samuel", "Sara", "Adrian"};
+        double[][] notas2D = {
+            {4.5, 4.2, 4.8}, // Fila 0: Samuel
+            {4.7, 4.6, 4.9}, // Fila 1: Sara
+            {4.0, 4.3, 4.1}  // Fila 2: Adrian
+        };
+
+        System.out.println("=== REPORTE DE NOTAS (MATRIZ 2D) ===");
+        for (int fila = 0; fila < notas2D.length; fila++) {
+            double suma = 0;
+            System.out.print(estudiantes[fila] + ": ");
+
+            for (int col = 0; col < notas2D[fila].length; col++) {
+                System.out.print(notas2D[fila][col]);
+                if (col < notas2D[fila].length - 1) {
+                    System.out.print(" | ");
+                }
+                suma += notas2D[fila][col];
+            }
+
+            double promedio = suma / notas2D[fila].length;
+            System.out.printf(" -> Promedio: %.2f%n", promedio);
+        }
+
+        // Actualizacion de un dato especifico (acceso por indice [fila][columna])
+        notas2D[2][0] = 4.4; // Corrige la primera nota de Adrian
+        System.out.println("\nNota actualizada de Adrian [2][0]: " + notas2D[2][0]);
+
+        // 2. ARREGLO 3D: [sede][grupo][registro] -> 2 sedes, 2 grupos, 2 datos por grupo
+        int[][][] registros3D = {
+            { // Sede 0
+                {15, 18}, // Grupo 0: asistentes y entregables
+                {20, 20}  // Grupo 1
+            },
+            { // Sede 1
+                {12, 16}, // Grupo 0
+                {19, 17}  // Grupo 1
+            }
+        };
+
+        System.out.println("\n=== CONTROL DE ENTREGABLES (ARREGLO 3D) ===");
+        for (int sede = 0; sede < registros3D.length; sede++) {
+            for (int grupo = 0; grupo < registros3D[sede].length; grupo++) {
+                int asistentes = registros3D[sede][grupo][0];
+                int entregables = registros3D[sede][grupo][1];
+                System.out.println("Sede " + sede + ", Grupo " + grupo
+                        + " -> Asistentes: " + asistentes
+                        + ", Entregables: " + entregables);
+            }
+        }
+    }
+}
